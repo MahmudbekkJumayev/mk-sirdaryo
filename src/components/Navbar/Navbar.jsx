@@ -16,11 +16,13 @@ const Navbar = () => {
   return (
     <div className="bg-blue-700">
       <div className="container flex justify-between items-center py-3">
-        <img
-          className="w-[120px] h-[60px]"
-          src={logo}
-          alt="Matbuot xizmati logo"
-        />
+        <a href="#">
+          <img
+            className="w-[120px] h-[60px]"
+            src={logo}
+            alt="Matbuot xizmati logo"
+          />
+        </a>
 
         {/* Drawer Button */}
         <div className="flex justify-center items-center gap-5">
