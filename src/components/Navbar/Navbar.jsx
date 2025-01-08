@@ -3,9 +3,14 @@ import logo from "../../assets/icons/logo.png";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -19,12 +24,10 @@ const Navbar = () => {
 
         {/* Drawer Button */}
         <div className="flex justify-center items-center gap-5">
-          {/* <span className="border-[1px] p-2 hover:border-red-600 border-white rounded-lg">
-            <h3 className="text-white font-bold">
-              <a href="">+998(93) 324 56 66</a>
-            </h3>
-          </span> */}
-          <button className="bg-white text-blue-700 font-medium px-4 py-2 rounded-lg">
+          <button
+            className="bg-white text-blue-700 font-medium px-4 py-2 rounded-lg"
+            onClick={toggleModal}
+          >
             Aloqa uchun
           </button>
           <button className="text-white" onClick={toggleDrawer}>
@@ -55,10 +58,6 @@ const Navbar = () => {
           {/* Drawer */}
           {isDrawerOpen && (
             <div className="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto bg-white w-80 shadow-lg transition-transform">
-              <h5
-                id="drawer-right-label"
-                className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
-              ></h5>
               <button
                 type="button"
                 onClick={toggleDrawer}
@@ -82,16 +81,72 @@ const Navbar = () => {
                 <span className="sr-only">Close menu</span>
               </button>
 
-              <div className="flex flex-col gap-2 pt-3">
-                <span className="border-[2px] font-medium p-2 rounded-lg border-blue-700">
-                    Yetkazib berish shartlari
+              <div className="flex flex-col gap-1 pt-10">
+                <span className="border-[1px] font-medium p-2 rounded-lg hover:bg-blue-700 hover:text-white cursor-pointer border-blue-700">
+                  Yetkazib berish shartlari
                 </span>
-                <span className="border-[2px] font-medium p-2 rounded-lg border-blue-700">
-                    Qo'shimcha ma'lumotlar
+                <span className="border-[1px] font-medium p-2 rounded-lg hover:bg-blue-700 hover:text-white cursor-pointer border-blue-700">
+                  Qo'shimcha ma'lumotlar
                 </span>
-
               </div>
             </div>
+          )}
+
+          {/* Modal */}
+          {isModalOpen && (
+            <>
+              {/* Overlay */}
+              <div
+                className="fixed inset-0 bg-black bg-opacity-60 z-40"
+                onClick={toggleModal}
+              ></div>
+
+              {/* Modal Content */}
+              <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="bg-white rounded-lg shadow-lg w-96 p-6">
+                  <div className="flex justify-between items-center pb-4 border-b">
+                    <h3 className="text-lg font-medium text-gray-900">
+                      Aloqa uchun ma'lumot
+                    </h3>
+                    <button
+                      onClick={toggleModal}
+                      className="text-gray-400 hover:text-gray-600"
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-gray-700 text-sm">
+                      Biz bilan bog'lanish uchun telefon raqamingizni kiriting:
+                    </p>
+                    <input
+                      type="text"
+                      placeholder="+998 (__) ___ __ __"
+                      className="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                    />
+                    <button
+                      className="mt-4 w-full bg-blue-700 text-white py-2 px-4 rounded-lg hover:bg-blue-800"
+                      onClick={toggleModal}
+                    >
+                      Yuborish
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
