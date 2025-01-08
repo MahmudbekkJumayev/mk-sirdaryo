@@ -6,7 +6,7 @@ const Home = () => {
     <div className="container py-5">
       <div>
         <h2 className="text-[20px] md:text-[30px] font-medium text-gray-900 text-center">2025-YIL UCHUN DAVRIY NASHRLARGA OBUNA BO'LISH</h2>
-        <div className="flex gap-5 py-5">
+        <div className="grid grid-cols-3 gap-10 py-5">
             <div>
                 <Form/>
             </div>
